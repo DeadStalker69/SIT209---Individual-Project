@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Remove Device</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+      body {
+        font-family: 'Rajdhani', sans-serif;
+        background-image: url("w2.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+      .navbar {
+      background-color: rgb(66, 171, 206);
+        
+    }
+
+    .nav-link:hover{
+      background-color: #45a891;
+    }
+      .form-container {
+        background-color: transparent;
+        padding: 20px;
+        box-shadow: 0px 0px 10px 0px #bfbfbf;
+        max-width: 500px;
+        margin: auto;
+        margin-top: 100px;
+        margin-bottom: 50px;
+      }
+      .form-control {
+        border-radius: 20px;
+      }
+      .btn {
+      background-color: #fff;
+      color: #000;
+      border-color: cornflowerblue;
+      padding: 10px 20px;
+      margin-right: 10px;
+    }
+    .btn:hover {
+      background-color: #45a891;
+      color: #fff;
+    }
+      label {
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav" style="margin-top: 20px;">
+        <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" style="font-weight: bold; color:#ffffff; " href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" style="font-weight: bold; color:#ffffff; " href="/dev_preference">Preference</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" style="font-weight: bold; color:#ffffff; " href="/monitor_Dev">Monitor</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" style="font-weight: bold; color:#ffffff; " href="/Add_device">Add Device</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" style="font-weight: bold; color:#ffffff; " href="/remove_Dev">Remove Device</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" style="font-weight: bold; color:#ffffff; " href="/lighting">Lighting</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" style="font-weight: bold; color:#ffffff; " href="/airc">Air-Conditioning</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" style="font-weight: bold; color:#ffffff; " href="/security">Security</a>
+        </li>
+        </ul>
+      </div>
+      </nav>
+      
+    <div class="container">
+
+      <div class="form-container">
+        <h1 class="text-center" style="margin-bottom: 40px; text-shadow: 2px 2px 5px rgba(0,0,0,0.2);">Remove Device</h1>
+
+        <form>
+          <div class="form-group">
+            <label for="device-type" style="font-weight: bold; background-color: #a3d0ed;">Device Type</label>
+            <select class="form-control" id="rem_dev_type">
+              <option value="1">Lighting Device</option>
+              <option value="2">Air Conditioning Device</option>
+              <option value="3">Security Device</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="floor" style="font-weight: bold; background-color: #a3d0ed;">Floor</label>
+            <select class="form-control" id="rem_floor_now">
+              <option value="">--Select--</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="room" style="font-weight: bold; background-color: #a3d0ed;">Room Number</label>
+            <select class="form-control" id="rem_room">
+              <option value="">--Select--</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="device" style="font-weight: bold; background-color: #a3d0ed;">Device</label>
+            <select class="form-control" id="remove_dev">
+              <!--  -->
+            </select>
+          </div>
+          <button id="remove_dev_button" type="button" class="btn">Remove Device</button>
+          <button type="button" class="btn" style="margin-left:200px ;">Go Back</button>
+        </form>
+    </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK" crossorigin="anonymous"></script>
+    <script src="app.js"></script>
+    </body>
+</html>
+

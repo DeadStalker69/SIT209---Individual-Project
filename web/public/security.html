@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My Webpage</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <style>
+    body {
+      font-family: 'Rajdhani', sans-serif;
+            background-image: url("w2.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+    }
+    .container-custom {
+      margin: 50px;
+      display: flex;
+      justify-content: center;
+      background-color: transparent;
+        padding: 20px;
+        box-shadow: 0px 0px 10px 0px #bfbfbf;
+        margin-left: 350px;
+        margin-top: 100px;
+        max-width: 1000px;
+    }
+    
+    .navbar {
+      background-color: rgb(66, 171, 206);
+        
+    }
+
+    .nav-link:hover{
+      background-color: #45a891;
+    }
+   
+    table {
+      max-width: 100%;
+    }
+    
+    h1 {
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark">
+
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+		  <span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNav" style="margin-top: 20px;">
+		  <ul class="navbar-nav ml-auto">
+			<li class="nav-item">
+			  <a class="nav-link" style="font-weight: bold; color:#ffffff; " href="/">Home</a>
+			</li>
+      <li class="nav-item">
+			  <a class="nav-link" style="font-weight: bold; color:#ffffff; " href="/dev_preference">Preference</a>
+			</li>
+      <li class="nav-item">
+			  <a class="nav-link" style="font-weight: bold; color:#ffffff; " href="/monitor_Dev">Monitor</a>
+			</li>
+			<li class="nav-item">
+			  <a class="nav-link" style="font-weight: bold; color:#ffffff; " href="/Add_device">Add Device</a>
+			</li>
+			<li class="nav-item">
+			  <a class="nav-link" style="font-weight: bold; color:#ffffff; " href="/remove_Dev">Remove Device</a>
+			</li>
+			<li class="nav-item">
+			  <a class="nav-link" style="font-weight: bold; color:#ffffff; " href="/lighting">Lighting</a>
+			</li>
+      <li class="nav-item">
+			  <a class="nav-link" style="font-weight: bold; color:#ffffff; " href="/airc">Air-Conditioning</a>
+			</li>
+      <li class="nav-item">
+			  <a class="nav-link" style="font-weight: bold; color:#ffffff; " href="/security">Security</a>
+			</li>
+		  </ul>
+		</div>
+	  </nav>
+
+  <div class="container-fluid container-custom">
+    <div>
+      <h1>Security</h1>
+      <table id = "security_device" class="table table-striped">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Room</th>
+            <th>Floor</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        
+      </table>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

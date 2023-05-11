@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Select Device</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<style>
+		body {
+
+			font-family: 'Rajdhani', sans-serif;
+            background-image: url("w2.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+		}
+		h2 {
+			margin-top: 0;
+		}
+		.navbar {
+      background-color: rgb(66, 171, 206);
+        
+    }
+    .nav-link:hover{
+      background-color: #45a891;
+    }
+		.form-container {
+            background-color: transparent;
+        padding: 20px;
+        
+        box-shadow: 0px 0px 10px 0px #bfbfbf;
+        max-width: 400px;
+        margin-left: 100px;
+        
+        margin-top: 200px;
+        margin-bottom: 10px;
+        height: 50vh;
+		}
+		
+		.form-container, .data-container {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			
+		}
+		form {
+			margin-bottom: 20px;
+		}
+		.btn {
+      background-color: #fff;
+      color: #000;
+      size-adjust:inherit;
+      border-color: cornflowerblue;
+      padding: 10px 20px;
+      margin-right: 100px;
+      margin-left: 850px;
+      margin-top: 23px;
+      position: absolute;
+      
+    }
+    .btn1{
+        background-color: #fff;
+      color: #000;
+      border-color: cornflowerblue;
+      padding: 10px 20px;
+      margin-right: 10px;
+      margin-top: 20px;
+      margin-left: 700px;
+      position: absolute;
+    }
+    .btn:hover {
+      background-color: #000;
+      color: #fff;
+    }
+    .btn1:hover{
+        background-color: #000;
+      color: #fff;
+    }
+		.graph {
+			height: 200px;
+			margin-top: 20px;
+			background-color: #f2f2f2;
+			border: 1px solid #ccc;
+			padding: 10px;
+			box-sizing: border-box;
+		}
+		
+	</style>
+</head>
+<body>
+    
+	
+
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-6 form-container">
+				<h2 style="margin-bottom: 30px;">Device #1</h2>
+				<form>
+					<label style="font-weight: bold; background-color: #a3d0ed;">Type of Device:</label>
+					<select id="device_1_type" class="form-control" name="deviceType">
+						<option value="1">Lighting Device</option>
+						<option value="2">Air-Conditioning Device</option>
+						<option value="3">Security</option> Device</option>
+					</select>
+					<br>
+					<label style="font-weight: bold; background-color: #a3d0ed;">Floor Number:</label>
+					<select id="device_1_f" class="form-control" name="floorNumber">
+						<option value="">--Select--</option>
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+					</select>
+					<br>
+					<label style="font-weight: bold; background-color: #a3d0ed;">Room Number:</label>
+					<select id="dev_1_r" class="form-control" name="roomNumber">
+						
+					</select>
+					<br>
+					<label style="font-weight: bold; background-color: #a3d0ed;">Device:</label>
+					<select id="device_1_device" class="form-control" name="device">
+						
+					</select>
+					<br>
+					
+				</form>
+			</div>
+
+            <div class="col-md-6 form-container">
+				<h2 style="margin-bottom: 30px;">Device #2</h2>
+				<form>
+					<label style="font-weight: bold; background-color: #a3d0ed;">Type of Device:</label>
+					<select id="devs_2_t" class="form-control" name="deviceType">
+						<option value="1">Lighting Device</option>
+						<option value="2">Air-Conditioning Device</option>
+						<option value="3">Security</option> Device</option>
+					</select>
+					<br>
+					<label style="font-weight: bold; background-color: #a3d0ed;">Floor Number:</label>
+					<select id="devs_2_f" class="form-control" name="floorNumber">
+						<option value="">--Select--</option>
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+					</select>
+					<br>
+					<label style="font-weight: bold; background-color: #a3d0ed;">Room Number:</label>
+					<select id="devs_2_r" class="form-control" name="roomNumber">
+						
+					</select>
+					<br>
+					<label style="font-weight: bold; background-color: #a3d0ed;">Device:</label>
+					<select id="devs_2_d" class="form-control" name="device">
+						
+					</select>
+					
+				</form>
+			</div>
+
+            <div class="col-md-6 form-container">
+				<h2 style="margin-bottom: 30px;">Device #3</h2>
+				<form>
+					<label style="font-weight: bold; background-color: #a3d0ed;">Type of Device:</label>
+					<select id="devs_3_t" class="form-control" name="deviceType">
+						<option value="1">Lighting Device</option>
+						<option value="2">Air-Conditioning Device</option>
+						<option value="3">Security</option> Device</option>
+					</select>
+					<br>
+					<label style="font-weight: bold; background-color: #a3d0ed;">Floor Number:</label>
+					<select id="devs_3_f" class="form-control" name="floorNumber">
+						<option value="">--Select--</option>
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+					</select>
+					<br>
+					<label style="font-weight: bold; background-color: #a3d0ed;">Room Number:</label>
+					<select id="devs_3_r" class="form-control" name="roomNumber">
+						
+					</select>
+					<br>
+					<label style="font-weight: bold; background-color: #a3d0ed;">Device:</label>
+					<select id="devs_3_d" class="form-control" name="device">
+						
+					</select>
+					<br>
+					
+				</form>
+			</div>
+          
+        </div>
+        <button id="d_preference" type="button" class="btn1" >Set</button>
+		<a href="/" class="btn">Home</a>
+
+	</div>
+    </body>
+   
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK" crossorigin="anonymous"></script>
+	<script src="app.js"></script>
+    </html>
