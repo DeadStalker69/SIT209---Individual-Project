@@ -1,15 +1,25 @@
 const mongoose = require('mongoose');
-mongoose.connect('mongodb+srv://DeadStalker:DeadStalker@atlascluster.5zvcaby.mongodb.net/mydb', {useNewUrlParser: true, useUnifiedTopology: true });
+const fs = require('fs')
+const helmet = require("helmet");
+const swaggerJSDoc = require('swagger-jsdoc');
+const swaggerUi = require('swagger-ui-express');
+const https = require('https')
+var sslOptions = {
+key: fs.readFileSync('key.pem'),
+cert: fs.readFileSync('cert.pem'),
+passphrase: 'qwerty'
+};
+mongoose.connect('mongodb+srv://vishal4855be21:g8Syw62NPqqVS5p2@cluster0.bvvimlw.mongodb.net/myFirstDatabase', {useNewUrlParser: true, useUnifiedTopology: true });
 const Device = require('./models/device'); 
 const Lighting = require('./models/lighting');
 const Security = require('./models/security'); 
-const AirC = require('./models/aircon');
+const AirC = require('./models/acond');
 const FloorPlan = require('./models/froomplan');
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
 const cors = require('cors');
-const port = 5000;
+const port = process.env.port || 5000;
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 app.use(function(req, res, next) {
@@ -18,8 +28,45 @@ app.use(function(req, res, next) {
   res.setHeader("Cross-Origin-Resource-Policy", "same-site");
   res.header("Cross-Origin-Opener-Policy", "same-origin-allow-popups");
   res.header("Cross-Origin-Embedder-Policy", "require-corp");
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
   next();
 });
+
+const swaggerOptions = {
+  definition: {
+    openapi: '3.0.0',
+    info: {
+      title: 'Smart Building',
+      version: '1.0.0',
+      description: 'API documentation generated using Swagger',
+    },
+  },
+  apis: ['./api.js'], // Path to your API route files
+};
+
+const swaggerSpec = swaggerJSDoc(swaggerOptions);
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+
+app.use(helmet({
+  contentSecurityPolicy: {
+    directives: {
+      defaultSrc: ["'self'"],
+      scriptSrc: ["'self'", "https://code.highcharts.com/highcharts.js","https://maps.googleapis.com", "https://code.jquery.com", "https://cdnjs.cloudflare.com", "https://stackpath.bootstrapcdn.com", "https://fonts.googleapis.com"],
+      connectSrc: ["'self'", "https://localhost:3000", "mongodb+srv://your-mongodb-url"],
+      frameAncestors: ["'none'"],
+      "Cross-Origin-Embedder-Policy": "require-corp",
+      imgSrc: ["'self'", "data:"],
+      styleSrc: ["'self'","https://maxcdn.bootstrapcdn.com", "https://stackpath.bootstrapcdn.com", "https://fonts.googleapis.com", "'unsafe-inline'"],
+      fontSrc: ["'self'", "https://maxcdn.bootstrapcdn.com","https://stackpath.bootstrapcdn.com","https://fonts.gstatic.com", "https://fonts.googleapis.com", "data:"],
+      objectSrc: ["'none'"],
+      upgradeInsecureRequests: []
+    },
+    reportOnly: false
+  }
+}));
+var server = https.createServer(sslOptions, app).listen(port, function(){
+  console.log("Express server listening on port " + port);
+  });
 app.use(cors({
   origin: 'https://localhost:3000',
   methods: ['GET', 'POST', 'PUT', 'DELETE']
@@ -29,6 +76,25 @@ app.get('/test', (req, res) => {
   res.send('The API is working!');
 });
 
+
+
+/**
+ * @swagger
+ * /api/getFloorR:
+ *   get:
+ *     summary: Get Rooms from a floor
+ *     tags: [Rooms]
+ *     parameters:
+ *       - floor: String
+ *         schema:
+ *           floor: string
+ *           rooms: Array
+ *     responses:
+ *       200:
+ *         description: Successful operation
+ *       404:
+ *         description: User not found
+ */
 
 app.get('/api/getFloorR', async (req, res) => {
 
@@ -41,9 +107,6 @@ app.get('/api/getFloorR', async (req, res) => {
     console.error(err);
   }
 });
-
-
-
 
 app.delete('/api/removeDevice', async (req, res) => {
   try {
@@ -281,9 +344,4 @@ app.post('/devices', (req, res) => {
       ? res.send(err)
       : res.send('successfully added device and data');
   });
-});
-
-
-app.listen(port, () => {
-  console.log(`listening on port ${port}`);
 });
