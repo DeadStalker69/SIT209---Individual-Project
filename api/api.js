@@ -318,6 +318,24 @@ app.get('/api/sensor_data', async (req, res) => {
   }
 });
 
+/**
+ * @swagger
+ * /api/postLighting:
+ *   post:
+ *     summary: Update lighting state
+ *     tags: [Rooms]
+ *     parameters:
+ *       - floor: String
+ *         schema:
+ *           floor: string
+ *           rooms: Array
+ *     responses:
+ *       200:
+ *         description: Successful operation
+ *       404:
+ *         description: User not found
+ */
+
 app.post('/api/lighting', async (req, res) => {
   const { name, floor, room } = req.body;
 
@@ -342,6 +360,24 @@ app.post('/api/lighting', async (req, res) => {
   }
   }
 });
+
+/**
+ * @swagger
+ * /api/postSecurity:
+ *   post:
+ *     summary: Update security
+ *     tags: [Rooms]
+ *     parameters:
+ *       - floor: String
+ *         schema:
+ *           floor: string
+ *           rooms: Array
+ *     responses:
+ *       200:
+ *         description: Successful operation
+ *       404:
+ *         description: User not found
+ */
 
 app.post('/api/security', async (req, res) => {
   const { name, floor, room } = req.body;
@@ -369,6 +405,24 @@ app.post('/api/security', async (req, res) => {
   }
   
 });
+
+/**
+ * @swagger
+ * /api/postTemp:
+ *   post:
+ *     summary: Update temperature of room
+ *     tags: [Rooms]
+ *     parameters:
+ *       - floor: String
+ *         schema:
+ *           floor: string
+ *           rooms: Array
+ *     responses:
+ *       200:
+ *         description: Successful operation
+ *       404:
+ *         description: User not found
+ */
 
 app.post('/api/aircon', async (req, res) => {
   const { name, floor, room } = req.body;
@@ -428,6 +482,24 @@ app.post('/api/aircon', async (req, res) => {
 
 //deivces get and post requests for,, reference
 
+/**
+ * @swagger
+ * /api/getDevices:
+ *   get:
+ *     summary: Get information of all the devices connected
+ *     tags: [Rooms]
+ *     parameters:
+ *       - floor: String
+ *         schema:
+ *           floor: string
+ *           rooms: Array
+ *     responses:
+ *       200:
+ *         description: Successful operation
+ *       404:
+ *         description: User not found
+ */
+
 app.get('/devices', (req, res) => {
   Device.find({})
     .then(devices => {
@@ -437,6 +509,24 @@ app.get('/devices', (req, res) => {
       res.send(err);
     });
 });
+
+/**
+ * @swagger
+ * /api/postDevices:
+ *   post:
+ *     summary: Update information about a device
+ *     tags: [Rooms]
+ *     parameters:
+ *       - floor: String
+ *         schema:
+ *           floor: string
+ *           rooms: Array
+ *     responses:
+ *       200:
+ *         description: Successful operation
+ *       404:
+ *         description: User not found
+ */
 
 app.post('/devices', (req, res) => {
   const { name, user, sensorData } = req.body;
