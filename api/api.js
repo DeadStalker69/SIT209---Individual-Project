@@ -108,6 +108,24 @@ app.get('/api/getFloorR', async (req, res) => {
   }
 });
 
+/**
+ * @swagger
+ * /api/delete:
+ *   get:
+ *     summary: remove a device
+ *     tags: [Rooms]
+ *     parameters:
+ *       - floor: String
+ *         schema:
+ *           floor: string
+ *           rooms: Array
+ *     responses:
+ *       200:
+ *         description: Successful operation
+ *       404:
+ *         description: User not found
+ */
+
 app.delete('/api/removeDevice', async (req, res) => {
   try {
     const type = req.body.type;
@@ -130,6 +148,23 @@ app.delete('/api/removeDevice', async (req, res) => {
   }
 });
 
+/**
+ * @swagger
+ * /api/getLighting:
+ *   get:
+ *     summary: Get light state
+ *     tags: [Rooms]
+ *     parameters:
+ *       - floor: String
+ *         schema:
+ *           floor: string
+ *           rooms: Array
+ *     responses:
+ *       200:
+ *         description: Successful operation
+ *       404:
+ *         description: User not found
+ */
 
 app.get('/api/lighting', async (req, res) => {
   try {
@@ -140,6 +175,23 @@ app.get('/api/lighting', async (req, res) => {
   }
 });
 
+/**
+ * @swagger
+ * /api/getSecurity:
+ *   get:
+ *     summary: Get data from security devices
+ *     tags: [Rooms]
+ *     parameters:
+ *       - floor: String
+ *         schema:
+ *           floor: string
+ *           rooms: Array
+ *     responses:
+ *       200:
+ *         description: Successful operation
+ *       404:
+ *         description: User not found
+ */
 
 app.get('/api/security', async (req, res) => {
   try {
@@ -150,6 +202,24 @@ app.get('/api/security', async (req, res) => {
   }
 });
 
+/**
+ * @swagger
+ * /api/getTemp:
+ *   get:
+ *     summary: Get Temperature reading of a room
+ *     tags: [Rooms]
+ *     parameters:
+ *       - floor: String
+ *         schema:
+ *           floor: string
+ *           rooms: Array
+ *     responses:
+ *       200:
+ *         description: Successful operation
+ *       404:
+ *         description: User not found
+ */
+
 
 app.get('/api/aircon', async (req, res) => {
   try {
@@ -159,6 +229,24 @@ app.get('/api/aircon', async (req, res) => {
     res.status(500).send('Server error');
   }
 });
+
+/**
+ * @swagger
+ * /api/retrive devices:
+ *   get:
+ *     summary: Get information about all devices in a room
+ *     tags: [Rooms]
+ *     parameters:
+ *       - floor: String
+ *         schema:
+ *           floor: string
+ *           rooms: Array
+ *     responses:
+ *       200:
+ *         description: Successful operation
+ *       404:
+ *         description: User not found
+ */
 
 app.get('/api/retrieveDevices', async (req, res) => {
   try {
@@ -186,6 +274,24 @@ app.get('/api/retrieveDevices', async (req, res) => {
   }
 
 });
+
+/**
+ * @swagger
+ * /api/getSensorData:
+ *   get:
+ *     summary: Get data from a requested sensor
+ *     tags: [Rooms]
+ *     parameters:
+ *       - floor: String
+ *         schema:
+ *           floor: string
+ *           rooms: Array
+ *     responses:
+ *       200:
+ *         description: Successful operation
+ *       404:
+ *         description: User not found
+ */
 
 app.get('/api/sensor_data', async (req, res) => {
   try {
