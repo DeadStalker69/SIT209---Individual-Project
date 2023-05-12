@@ -12,16 +12,20 @@ cert: fs.readFileSync('cert.pem'),
 passphrase: 'qwerty'
 };
 
+// const SerialPort = require('serialport/bindings');
+// const Readline = require('@serialport/parser-readline');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-
+// const Sensor = require('./models/sensor');
 const Lighting = require('./models/lighting');
 const Security = require('../api/models/security');
 const AirCond = require('./models/acond');
 const app = express();
+// app.use(express.static('public'));
+// const sport = new SerialPort('COM3', { baudRate: 9600 });
+// const parser = sport.pipe(new Readline({ delimiter: '\r\n' }));
 
-
-mongoose.connect('mongodb+srv://DeadStalker:DeadStalker@atlascluster.5zvcaby.mongodb.net/mydb', {useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect('mongodb+srv://vishal4855be21:g8Syw62NPqqVS5p2@cluster0.bvvimlw.mongodb.net/myFirstDatabase', {useNewUrlParser: true, useUnifiedTopology: true });
 
 app.use(helmet({
 
@@ -53,15 +57,23 @@ app.use(function(req, res, next) {
 
 
 
-const comPort1 = new SerialPort({
-  path: 'COM11',
-  baudRate: 9600,
-  dataBits: 8,
-  stopBits: 1,
-  parity: 'none',
-  });
+// const comPort1 = new SerialPort({
+//   path: 'COM12',
+//   baudRate: 9600,
+//   dataBits: 8,
+//   stopBits: 1,
+//   parity: 'none',
+//   });
+//   const parser = comPort1.pipe(new ReadlineParser({ delimiter: '\r\n' }));
 
-const parser = comPort1.pipe(new ReadlineParser({ delimiter: '\r\n' }));
+// const parser = comPort1.pipe(new ReadlineParser({ delimiter: '\r\n' }));
+  // Read the port data
+// port1.on("open", () => {
+//   console.log('serial port open');
+// });
+// parser.on('data', data =>{
+//   console.log('got word from arduino:', data);
+// });
 
 
 var pref_d1 = {};
@@ -87,68 +99,66 @@ const client = mqtt.connect("mqtt://broker.hivemq.com:1883", {encoding: 'utf8'})
 
 client.on('connect', () => {
 
-    client.subscribe('/sensorData');
+    client.subscribe('/PrabhusensorData');
     console.log('mqtt connected');
    
     //testing
 
-    // const name = 'Lighttt';
-    // const room = '7';
-    // const floor = '2';
+    const name = 'L';
+    const room = '5';
+    const floor = '2';
 
-    // const Sdata = [20,1,40,10];//save the serial port stuff
-    // const topic = `/sensorData`;
-    // const message = JSON.stringify({ name, room, floor, Sdata});
+    const values = [20,1,40,10];//save the serial port stuff
+    const topic = `/PrabhusensorData`;
+    const message = JSON.stringify({values});
   
-    // client.publish(topic, message, () => {
-    //   console.log('published new message');
-    // });
+    client.publish(topic, message, () => {
+      console.log('published new message');
+    });
 
   });
 
-  const values = []; // Array to store the values
+  // const values = []; // Array to store the values
 
-  const temperatureValues = []; // Array to store temperature values
-  const humidityValues = []; // Array to store humidity values
+  // const temperatureValues = []; // Array to store temperature values
+  // const humidityValues = []; // Array to store humidity values
   
-  let count = 0; // Counter to keep track of the number of values read
+  // let count = 0; // Counter to keep track of the number of values read
   
-  parser.on('data', (data) => {
-    var currentDate = new Date();
-    var minutes = currentDate.getMinutes();
-    var seconds = currentDate.getSeconds();
-    values.push([data, minutes+seconds]);
-    console.log(values[count]);
-    count++;
+  // parser.on('data', (data) => {
+    
+  //   values.push([data, Date.now()]);
   
-    // Check if 20 values have been read (10 temperature values and 10 humidity values)
-    if (count === 5) {
+  //   count++;
+  
+  //   // Check if 20 values have been read (10 temperature values and 10 humidity values)
+  //   if (count === 10) {
 
-      const name = 'Lighttt';
-      const room = '7';
-      const floor = '2';
-      const topic = "/sensorData";
-      const message = JSON.stringify({
-        name,
-        room,
-        floor,
-        values
-      });
+  //     const name = 'Lighttt';
+  //     const room = '7';
+  //     const floor = '2';
   
-      console.log(message);
-      client.publish(topic, message);
-      console.log("Data sent to MQTT");
+  //     const message = JSON.stringify({
+  //       name,
+  //       room,
+  //       floor,
+  //       values
+  //     });
   
-      // Reset the counter and clear the arrays for the next set of values
-      count = 0;
+  //     console.log(message);
+  //     client.publish(topic, message);
+  //     console.log("Data sent to MQTT");
+  
+  //     // Reset the counter and clear the arrays for the next set of values
+  //     count = 0;
 
-      values.length=0;
-      temperatureValues.length = 0;
-      humidityValues.length = 0;
+  //     values.length=0;
+  //     temperatureValues.length = 0;
+  //     humidityValues.length = 0;
 
-    }
+  //   }
 
-  });
+  // });
   
   
   // parser.on('data', (data) => {
@@ -339,13 +349,19 @@ client.on('connect', () => {
     /////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////
     
-    else if (topic == '/sensorData') {
+    else if (topic == '/PrabhusensorData') {
+
       const data = JSON.parse(message);
       console.log(data);
       console.log("I am here");
+      
+      const name = "L";
+      const room = "5";
+      const floor = "2";
 
       try {
-          const device = await Lighting.findOne({ name: data.name, floor: data.floor, room: data.room  });
+    
+          const device = await Lighting.findOne({ name: name, floor: floor, room: room });
           device.sensorData = data.values;
           console.log('uploaded data:', device.sensorData);
           await device.save();
@@ -355,10 +371,9 @@ client.on('connect', () => {
         console.log(err);
       }
     }
+
   });
-  
-  
-  
+
   // console.log('Received POST request to /api/lighting');
   // console.log('Id:', 2);
   // console.log('sensorData:', [1,2,3,4]);
@@ -409,4 +424,3 @@ app.put('/sensor-data', (req, res) => {
 
     // console.log(pref_d1);
   });
-
