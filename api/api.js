@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-mongoose.connect('mongodb+srv://vishal4855be21:g8Syw62NPqqVS5p2@cluster0.bvvimlw.mongodb.net/myFirstDatabase', {useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect('mongodb+srv://DeadStalker:DeadStalker@atlascluster.5zvcaby.mongodb.net/mydb', {useNewUrlParser: true, useUnifiedTopology: true });
 const Device = require('./models/device'); 
 const Lighting = require('./models/lighting');
 const Security = require('./models/security'); 

@@ -21,7 +21,7 @@ const AirCond = require('./models/acond');
 const app = express();
 
 
-mongoose.connect('mongodb+srv://vishal4855be21:g8Syw62NPqqVS5p2@cluster0.bvvimlw.mongodb.net/myFirstDatabase', {useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect('mongodb+srv://DeadStalker:DeadStalker@atlascluster.5zvcaby.mongodb.net/mydb', {useNewUrlParser: true, useUnifiedTopology: true });
 
 app.use(helmet({
 
@@ -54,7 +54,7 @@ app.use(function(req, res, next) {
 
 
 const comPort1 = new SerialPort({
-  path: 'COM10',
+  path: 'COM11',
   baudRate: 9600,
   dataBits: 8,
   stopBits: 1,
